@@ -7,6 +7,7 @@ import {
   Ionicons,
   Octicons,
   FontAwesome6,
+  AntDesign,
 } from '@expo/vector-icons'
 import Home from '../screens/Authed/Home'
 import Profile from '../screens/Authed/Profile'
@@ -73,7 +74,7 @@ export default function NavBar() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarItem
-              iconName="game-controller-outline"
+              iconName="home"
               iconSize={30}
               iconColor="#633DE8"
               focused={focused}
@@ -88,11 +89,11 @@ export default function NavBar() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarItem
-              iconName="stethoscope"
+              iconName="star"
               iconSize={30}
               iconColor="#633DE8"
               focused={focused}
-              iconLibrary="FontAwesome"
+              iconLibrary="FontAwesome6"
             />
           ),
         }}
@@ -103,7 +104,7 @@ export default function NavBar() {
         options={{
           tabBarIcon: ({ focused }) => (
             <TabBarItem
-              iconName="horse-head"
+              iconName="person-outline"
               iconSize={30}
               iconColor="#633DE8"
               focused={focused}

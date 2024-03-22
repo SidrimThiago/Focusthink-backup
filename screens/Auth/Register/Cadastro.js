@@ -56,6 +56,7 @@ export default function Cadastro() {
   const handleVerifyClick2 = () => {
     if (password === confirm) {
       const newUser = {
+        // eslint-disable-next-line no-undef
         type,
         nome,
         genero,

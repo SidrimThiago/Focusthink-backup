@@ -23,7 +23,7 @@ export default function Start() {
   const [password, onChangePassword] = useState('')
   const [visiblePassword, setVisiblePassword] = useState(true)
   const navigation = useNavigation()
-  const keys = storage.getAllKeys();
+  const keys = storage.getAllKeys()
 
   const isValidEmail = (email) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
@@ -33,7 +33,7 @@ export default function Start() {
     <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={(values) => {
-          //depois eu faço algo
+        // depois eu faço algo
       }}
       validate={(values) => {
         const errors = {}
@@ -78,9 +78,9 @@ export default function Start() {
                   Resolva seus <Text className="font-bold">problemas</Text>
                 </Text>
 
-                <View className="relative justify-center h-14 mb-3 pr-8 pl-8 w-full">
+                <View className="relative justify-center h-14 mb-3 px-8 w-full">
                   <TextInput
-                  keyboardType='email-address'
+                    keyboardType="email-address"
                     style={[
                       styles.input,
                       errors.email && { borderColor: 'red', borderWidth: 3 },
@@ -105,7 +105,13 @@ export default function Start() {
                   />
                 </View>
                 {errors.email && (
-                  <Text style={{ color: 'red', marginBottom: 10, textAlign: 'right' }}>
+                  <Text
+                    style={{
+                      color: 'red',
+                      marginBottom: 10,
+                      textAlign: 'right',
+                    }}
+                  >
                     {errors.email}
                   </Text>
                 )}
@@ -113,8 +119,8 @@ export default function Start() {
                   <TextInput
                     style={styles.input}
                     onChangeText={(text) => {
-                      handleChange('password')(text);
-                      onChangePassword(text);
+                      handleChange('password')(text)
+                      onChangePassword(text)
                     }}
                     value={values.password}
                     placeholder="Senha"
@@ -193,24 +199,38 @@ export default function Start() {
                 </View>
 
                 <View className="text-center justify-center items-center w-full px-8 mt-8">
-                <ButtonComponent
-                title="Entrar"
-                onPress={() => {
-                  const userDataString = storage.getString('user')
-                if (userDataString){
-                    const userData = JSON.parse(userDataString)
-                    const { userEmail, userPassword, ProfissionalPassword } = userData
+                  <ButtonComponent
+                    title="Entrar"
+                    onPress={() => {
+                      const userDataString = storage.getString('user')
+                      if (userDataString) {
+                        const userData = JSON.parse(userDataString)
+                        const {
+                          userEmail,
+                          userPassword,
+                          ProfissionalPassword,
+                        } = userData
 
-                if(userEmail === values.email && userPassword === values.password || userEmail === values.email && ProfissionalPassword === values.password ){
-                    navigation.navigate('NavBar')
-              } else if(userEmail !== values.email && userPassword !== values.password || userEmail !== values.email && ProfissionalPassword !== values.password) {
-                    console.log('alguma coisa errada', values, userData)
-              } else {
-                    console.log('localstorage vazio', values.password)
-            }
-          }
-                }}
-                />
+                        if (
+                          (userEmail === values.email &&
+                            userPassword === values.password) ||
+                          (userEmail === values.email &&
+                            ProfissionalPassword === values.password)
+                        ) {
+                          navigation.navigate('NavBar')
+                        } else if (
+                          (userEmail !== values.email &&
+                            userPassword !== values.password) ||
+                          (userEmail !== values.email &&
+                            ProfissionalPassword !== values.password)
+                        ) {
+                          console.log('alguma coisa errada', values, userData)
+                        } else {
+                          console.log('localstorage vazio', values.password)
+                        }
+                      }
+                    }}
+                  />
                   <Text
                     style={styles.quicksand}
                     onPress={() => navigation.navigate('Cadastro')}

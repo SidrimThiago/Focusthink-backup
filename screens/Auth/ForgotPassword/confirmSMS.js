@@ -19,8 +19,11 @@ export default function ConfirmSMS() {
 
   return (
     <SafeAreaView style={styles.container} className="w-full h-full flex-1">
-      <LinearGradient colors={['#633DE8', '#1C233F']} className="w-full h-screen flex-1 " style={styles.background} >
-
+      <LinearGradient
+        colors={['#633DE8', '#1C233F']}
+        className="w-full h-screen flex-1 "
+        style={styles.background}
+      >
         <ReturnButton onPress={() => navigation.navigate('NewPassSMS')} />
 
         <Image
@@ -32,7 +35,6 @@ export default function ConfirmSMS() {
         />
 
         <View>
-
           <View class="text">
             <Text className="font-quick-bold mb-4 text-white text-2xl text-center">
               Verificação
@@ -41,7 +43,8 @@ export default function ConfirmSMS() {
               Por favor, informe o token de verificação
             </Text>
             <Text className="mb-4 text-white text-base text-center font-quick-bold ">
-              <Text className="font-quick-regular">para </Text><Text classname="font-quick-bold">{SMS}</Text>
+              <Text className="font-quick-regular">para </Text>
+              <Text classname="font-quick-bold">{SMS}</Text>
             </Text>
 
             <View class="OTPinput" className="text-center items-center">
@@ -53,20 +56,29 @@ export default function ConfirmSMS() {
             <Text className="text-sm text-white font-quick-bold">
               Não recebeu o token ?
             </Text>
-            <Text className="text-sm text-white text-center" style={styles.regularQuicksand} >
+            <Text
+              className="text-sm text-white text-center"
+              style={styles.regularQuicksand}
+            >
               Reenviar em
             </Text>
             <ResendTimer onResendClick={handleResendClick} />
           </View>
         </View>
 
-        <View className="text-center items-center w-full px-8" class="bottoms" >
-          <ButtonComponent title="Verificar" onPress={() => navigation.navigate('NewPass')} />
-          <Text style={styles.quicksand} onPress={() => navigation.navigate('NewPassEmail')} className="underline text-white mt-3" >
+        <View className="text-center items-center w-full px-8" class="bottoms">
+          <ButtonComponent
+            title="Verificar"
+            onPress={() => navigation.navigate('NewPass')}
+          />
+          <Text
+            style={styles.quicksand}
+            onPress={() => navigation.navigate('NewPassEmail')}
+            className="underline text-white mt-3"
+          >
             Usar o email em vez disso
           </Text>
         </View>
-
       </LinearGradient>
     </SafeAreaView>
   )

@@ -9,7 +9,7 @@ import ReturnButton from '../../../components/returnbutton'
 import axios from 'axios'
 import { MMKV } from 'react-native-mmkv'
 
-const storage = new MMKV({ id: 'user'})
+const storage = new MMKV({ id: 'user' })
 
 export default function ProfileCreate({ navigation, route }) {
   const [nomeUser, setNomeUser] = useState('')
@@ -31,8 +31,6 @@ export default function ProfileCreate({ navigation, route }) {
     }
   }
 
-
-
   const CreateUser = () => {
     const user = userData()
     const token = Math.random().toString(36).substring(2, 12)
@@ -40,38 +38,40 @@ export default function ProfileCreate({ navigation, route }) {
     user.token = token
     storage.set('userToken', token)
 
-    if(newUser) {
-      storage.set('user', JSON.stringify({
-        'type': 'Paciente',
-        'CompleteName': user.nome,
-        'userName': user.nomeUser,
-        'userEmail': user.email,
-        'historicMedic': user.historicMedic,
-        'phone': user.telefone,
-        'adress': user.endereco,
-        'userPassword': user.password,
-      }))
-    }else if (newProfissional) {
-      storage.set('user', JSON.stringify({
-        'type': 'Profissional',
-        'CompleteName': user.nomeCompleto,
-        'userName': user.nomeUser,
-        'userEmail': user.email,
-        'historicMedic': user.historicMedic,
-        'phone': user.telefone,
-        'adress': user.endereco,
-        'Crm/Crp': user.Crm,
-        'specialty': user.Especialidade,
-        'ProfissionalPassword': user.password,
-      }))
+    if (newUser) {
+      storage.set(
+        'user',
+        JSON.stringify({
+          type: 'Paciente',
+          CompleteName: user.nome,
+          userName: user.nomeUser,
+          userEmail: user.email,
+          historicMedic: user.historicMedic,
+          phone: user.telefone,
+          adress: user.endereco,
+          userPassword: user.password,
+        }),
+      )
+    } else if (newProfissional) {
+      storage.set(
+        'user',
+        JSON.stringify({
+          type: 'Profissional',
+          CompleteName: user.nomeCompleto,
+          userName: user.nomeUser,
+          userEmail: user.email,
+          historicMedic: user.historicMedic,
+          phone: user.telefone,
+          adress: user.endereco,
+          'Crm/Crp': user.Crm,
+          specialty: user.Especialidade,
+          ProfissionalPassword: user.password,
+        }),
+      )
     }
     console.log(token)
     navigation.navigate('login')
   }
-
-  useEffect(() => {
-    getPermission()
-  }, [])
 
   return (
     <SafeAreaView style={styles.container} className="w-full h-screen flex-1">
